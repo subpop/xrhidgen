@@ -35,7 +35,13 @@ var userCommand = &ffcli.Command{
 	ShortHelp:  "generate a user identity JSON object",
 	FlagSet:    NewUserFlagSet("user", flag.ExitOnError),
 	Exec: func(ctx context.Context, args []string) error {
+		identityType := "User"
+
+		id.Identity.Type = &identityType
 		id.Identity.User = &user
+		id.Identity.Internal = &identity.Internal{
+			OrgID: id.Identity.OrgID,
+		}
 
 		data, err := json.Marshal(id)
 		if err != nil {
