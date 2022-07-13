@@ -1,4 +1,4 @@
-`xrhidgen` generates X-Rh-Identity JSON objects suitable for passing into HTTP
+`xrhidgen` generates X-Rh-Identity JSON records suitable for passing into HTTP
 requests to console.redhat.com services. Any field not explicitly set via a
 command line flag will be populated by an appropriate random value.
 
@@ -14,25 +14,30 @@ go install github.com/subpop/xrhidgen@latest
 USAGE
   xrhidgen [flags] <subcommand>
 
+xrhidgen can be used to generate JSON records suitable for passing in to
+the X-Rh-Identity header. Each subcommand will generate a record of the
+specified type. Any flag set will be inserted instead of a random value.
+All remaining fields will be filled with a suitably random value.
+
 SUBCOMMANDS
-  user       generate a user identity JSON object
-  internal   generate an internal identity JSON object
-  system     generate a system identity JSON object
-  associate  generate an associate identity JSON object
+  user       generate a user identity JSON record
+  internal   generate an internal identity JSON record
+  system     generate a system identity JSON record
+  associate  generate an associate identity JSON record
 
 FLAGS
-  -account-number ...             set the identity.account_number field to `NUMBER`
-  -auth-type ...                  set the identity.authtype field to `STRING`
-  -employe-account-number ...     set the identity.employee_account_number field to `STRING`
-  -org-id ...                     set the identity.org_id field to `STRING`
-  -type ...                       set the identity.type field to `STRING`
+  -account-number ...          set the identity.account_number field (string)
+  -auth-type ...               set the identity.authtype field (string)
+  -employe-account-number ...  set the identity.employee_account_number field (string)
+  -org-id ...                  set the identity.org_id field (string)
+  -type ...                    set the identity.type field (string)
 ```
 
 # Examples
 
 ```
 $ xrhidgen user -email someuser@redhat.com
-{"identity":{"account_number":"666612","employee_account_number":"817871","org_id":"82969","type":"","user":{"email":"someuser@redhat.com","first_name":"Ari","is_active":true,"is_internal":false,"is_org_admin":false,"last_name":"Sipes","locale":"kl","user_id":"ammerman","username":"riyadh"}}}
+{"identity":{"account_number":"16349","auth_type":"cert","employee_account_number":"06900","internal":{"org_id":"51818"},"org_id":"51818","type":"User","user":{"email":"someuser@redhat.com","first_name":"Quinn","is_active":true,"is_internal":true,"is_org_admin":true,"last_name":"Runolfsdottir","locale":"se","user_id":"taps","username":"dunstable"}}}
 ```
 
 ```
