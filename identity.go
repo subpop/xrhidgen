@@ -8,11 +8,11 @@ import (
 // Identity holds values to be used as input when generating a main identity
 // record.
 type Identity struct {
-	AccountNumber         *string `faker:"DigitsWithSize(5)"`
-	AuthType              *string `faker:"String"`
-	EmployeeAccountNumber *string `faker:"DigitsWithSize(5)"`
-	OrgID                 *string `faker:"DigitsWithSize(5)"`
-	Type                  *string `faker:"String"`
+	AccountNumber         *string
+	AuthType              *string
+	EmployeeAccountNumber *string
+	OrgID                 *string
+	Type                  *string
 }
 
 // NewIdentity will build and return a partially populated Identity data
