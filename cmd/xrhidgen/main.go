@@ -1,3 +1,25 @@
+// xrhidgen generates X-Rh-Identity records.
+//
+// Usage:
+//   xrhidgen [flags] <subcommand>
+
+// xrhidgen can be used to generate JSON records suitable for passing in to
+// the X-Rh-Identity header. Each subcommand will generate a record of the
+// specified type. Any flag set will be inserted instead of a random value.
+// All remaining fields will be filled with a suitably random value.
+
+// SUBCOMMANDS
+//   user       generate a user identity JSON record
+//   internal   generate an internal identity JSON record
+//   system     generate a system identity JSON record
+//   associate  generate an associate identity JSON record
+
+// FLAGS
+//   -account-number ...          set the identity.account_number field (string)
+//   -auth-type ...               set the identity.authtype field (string)
+//   -employe-account-number ...  set the identity.employee_account_number field (string)
+//   -org-id ...                  set the identity.org_id field (string)
+//   -type ...                    set the identity.type field (string)
 package main
 
 import (
