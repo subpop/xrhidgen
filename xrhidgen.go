@@ -1,3 +1,5 @@
+// package xrhidgen generates X-Rh-Identity JSON records suitable for passing
+// into HTTP requests to console.redhat.com services.
 package xrhidgen
 
 import "github.com/pioz/faker"

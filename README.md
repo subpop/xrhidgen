@@ -1,14 +1,20 @@
+[![Go Documentation](https://godocs.io/github.com/subpop/xrhidgen?status.svg)](https://godocs.io/github.com/subpop/xrhidgen)
+
+# xrhidgen
+
 `xrhidgen` generates X-Rh-Identity JSON records suitable for passing into HTTP
 requests to console.redhat.com services. Any field not explicitly set via a
 command line flag will be populated by an appropriate random value.
 
-# Installation
+## Command Line
+
+### Installation
 
 ```
-go install github.com/subpop/xrhidgen@latest
+go install github.com/subpop/cmd/xrhidgen@latest
 ```
 
-# Usage
+### Usage
 
 ```
 USAGE
@@ -33,7 +39,7 @@ FLAGS
   -type ...                    set the identity.type field (string)
 ```
 
-# Examples
+### Examples
 
 ```
 $ xrhidgen user -email someuser@redhat.com
@@ -55,4 +61,38 @@ used to initialize the generator to a deterministic state.
 ```
 $ SEED=100 xrhidgen user
 {"identity":{"auth_type":"basic","employee_account_number":"02299","internal":{"org_id":"41123"},"org_id":"41123","type":"User","user":{"email":"winnifredwinning@shred.org","first_name":"Cameron","is_active":false,"is_internal":false,"is_org_admin":false,"last_name":"Stehr","locale":"fi","user_id":"meredeth","username":"skeptic"}}}
+```
+
+## Go package
+
+### Installation
+
+```
+go get github.com/subpop/xrhidgen@latest
+```
+
+### Usage
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+
+	"github.com/subpop/xrhidgen"
+)
+
+func main() {
+	xrhidgen.SetSeed(103)
+	id, err := xrhidgen.NewUserIdentity(xrhidgen.Identity{}, xrhidgen.User{})
+	if err != nil {
+		panic(err)
+	}
+	data, err := json.Marshal(id)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(data))
+}
 ```
