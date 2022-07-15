@@ -116,6 +116,9 @@ func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*ident
 	id.Identity.System = system
 
 	id.Identity.Type = ptrstring("System")
+	id.Identity.Internal = &identity.Internal{
+		OrgID: id.Identity.OrgID,
+	}
 
 	return id, nil
 }
