@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"github.com/peterbourgon/ff/v3/ffcli"
 	"github.com/subpop/xrhidgen"
@@ -42,6 +43,14 @@ func main() {
 		Exec: func(context.Context, []string) error {
 			return flag.ErrHelp
 		},
+	}
+
+	if val, has := os.LookupEnv("SEED"); has {
+		seed, err := strconv.ParseInt(val, 10, 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		xrhidgen.SetSeed(seed)
 	}
 
 	if err := root.ParseAndRun(context.Background(), os.Args[1:]); err != nil {

@@ -48,3 +48,11 @@ eyJpZGVudGl0eSI6eyJhY2NvdW50X251bWJlciI6IjQ0NDY4OCIsImVtcGxveWVlX2FjY291bnRfbnVt
 ```
 ht GET http://localhost:8080/api/module-update-router/v1/channel?module=insights-core "X-Rh-Identity: $(xrhidgen system | base64 -w0)"
 ```
+
+The `SEED` environment variable can be set to an integer. If set, it will be
+used to initialize the generator to a deterministic state.
+
+```
+$ SEED=100 xrhidgen user
+{"identity":{"auth_type":"basic","employee_account_number":"02299","internal":{"org_id":"41123"},"org_id":"41123","type":"User","user":{"email":"winnifredwinning@shred.org","first_name":"Cameron","is_active":false,"is_internal":false,"is_org_admin":false,"last_name":"Stehr","locale":"fi","user_id":"meredeth","username":"skeptic"}}}
+```
