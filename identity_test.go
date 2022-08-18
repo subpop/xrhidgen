@@ -36,7 +36,7 @@ func TestNewIdentity(t *testing.T) {
 				}{
 					AccountNumber:         nil,
 					Associate:             nil,
-					AuthType:              "basic",
+					AuthType:              "basic-auth",
 					EmployeeAccountNumber: ptrstring("02299"),
 					Internal:              nil,
 					OrgID:                 "41123",
@@ -68,7 +68,7 @@ func TestNewIdentity(t *testing.T) {
 				}{
 					AccountNumber:         ptrstring("1234"),
 					Associate:             nil,
-					AuthType:              "cert",
+					AuthType:              "cert-auth",
 					EmployeeAccountNumber: ptrstring("00229"),
 					Internal:              nil,
 					OrgID:                 "94112",
@@ -84,7 +84,7 @@ func TestNewIdentity(t *testing.T) {
 			seed:        100,
 			input: Identity{
 				AccountNumber:         ptrstring("10001"),
-				AuthType:              ptrstring("basic"),
+				AuthType:              ptrstring("basic-auth"),
 				EmployeeAccountNumber: ptrstring("112233"),
 				OrgID:                 ptrstring("111111"),
 				Type:                  ptrstring("universal"),
@@ -104,7 +104,7 @@ func TestNewIdentity(t *testing.T) {
 				}{
 					AccountNumber:         ptrstring("10001"),
 					Associate:             nil,
-					AuthType:              "basic",
+					AuthType:              "basic-auth",
 					EmployeeAccountNumber: ptrstring("112233"),
 					Internal:              nil,
 					OrgID:                 "111111",

@@ -31,7 +31,7 @@ func NewIdentity(template Identity) (*identity.Identity, error) {
 	if template.AuthType != nil {
 		id.Identity.AuthType = *template.AuthType
 	} else {
-		id.Identity.AuthType = faker.Pick("basic", "cert")
+		id.Identity.AuthType = faker.Pick("basic-auth", "cert-auth")
 	}
 
 	if template.EmployeeAccountNumber != nil {
