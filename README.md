@@ -11,7 +11,7 @@ command line flag will be populated by an appropriate random value.
 ### Installation
 
 ```
-go install github.com/subpop/cmd/xrhidgen@latest
+go install github.com/subpop/xrhidgen/cmd/xrhidgen@latest
 ```
 
 ### Usage
