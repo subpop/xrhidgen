@@ -36,21 +36,21 @@ func NewUser(template User) (*identity.User, error) {
 	}
 
 	if template.IsActive != nil {
-		id.IsActive = *template.IsActive
+		id.Active = *template.IsActive
 	} else {
-		id.IsActive = faker.Bool()
+		id.Active = faker.Bool()
 	}
 
 	if template.IsInternal != nil {
-		id.IsInternal = *template.IsInternal
+		id.Internal = *template.IsInternal
 	} else {
-		id.IsInternal = faker.Bool()
+		id.Internal = faker.Bool()
 	}
 
 	if template.IsOrgAdmin != nil {
-		id.IsOrgAdmin = *template.IsOrgAdmin
+		id.OrgAdmin = *template.IsOrgAdmin
 	} else {
-		id.IsOrgAdmin = faker.Bool()
+		id.OrgAdmin = faker.Bool()
 	}
 
 	if template.LastName != nil {

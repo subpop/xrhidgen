@@ -8,7 +8,7 @@ import (
 // Internal holds values to be used as input when generating an internal
 // identity record.
 type Internal struct {
-	AuthTime    *float64
+	AuthTime    *float32
 	CrossAccess *bool
 	OrgID       *string
 }
@@ -19,15 +19,15 @@ func NewInternal(template Internal) (*identity.Internal, error) {
 	var id identity.Internal
 
 	if template.AuthTime != nil {
-		id.AuthTime = template.AuthTime
+		id.AuthTime = *template.AuthTime
 	} else {
-		id.AuthTime = ptrfloat64(float64(faker.Duration()))
+		id.AuthTime = float32(faker.Duration())
 	}
 
 	if template.CrossAccess != nil {
-		id.CrossAccess = template.CrossAccess
+		id.CrossAccess = *template.CrossAccess
 	} else {
-		id.CrossAccess = ptrbool(faker.Bool())
+		id.CrossAccess = faker.Bool()
 	}
 
 	if template.OrgID != nil {

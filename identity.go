@@ -17,14 +17,14 @@ type Identity struct {
 
 // NewIdentity will build and return a partially populated Identity data
 // structure, using any values that are present in template.
-func NewIdentity(template Identity) (*identity.Identity, error) {
-	var id identity.Identity
+func NewIdentity(template Identity) (*identity.XRHID, error) {
+	var id identity.XRHID
 
 	if template.AccountNumber != nil {
-		id.Identity.AccountNumber = template.AccountNumber
+		id.Identity.AccountNumber = *template.AccountNumber
 	} else {
 		if faker.Bool() {
-			id.Identity.AccountNumber = ptrstring(faker.DigitsWithSize(5))
+			id.Identity.AccountNumber = faker.DigitsWithSize(5)
 		}
 	}
 
@@ -35,10 +35,10 @@ func NewIdentity(template Identity) (*identity.Identity, error) {
 	}
 
 	if template.EmployeeAccountNumber != nil {
-		id.Identity.EmployeeAccountNumber = template.EmployeeAccountNumber
+		id.Identity.EmployeeAccountNumber = *template.EmployeeAccountNumber
 	} else {
 		if faker.Bool() {
-			id.Identity.EmployeeAccountNumber = ptrstring(faker.DigitsWithSize(5))
+			id.Identity.EmployeeAccountNumber = faker.DigitsWithSize(5)
 		}
 	}
 
@@ -49,9 +49,9 @@ func NewIdentity(template Identity) (*identity.Identity, error) {
 	}
 
 	if template.Type != nil {
-		id.Identity.Type = template.Type
+		id.Identity.Type = *template.Type
 	} else {
-		id.Identity.Type = ptrstring(faker.String())
+		id.Identity.Type = faker.String()
 	}
 
 	return &id, nil
@@ -60,7 +60,7 @@ func NewIdentity(template Identity) (*identity.Identity, error) {
 // NewAssociateIdentity will build and return a fully populated Associate
 // identity record, using any values that are present in identityTemplate and
 // associateTemplate.
-func NewAssociateIdentity(identityTemplate Identity, associateTemplate Associate) (*identity.Identity, error) {
+func NewAssociateIdentity(identityTemplate Identity, associateTemplate Associate) (*identity.XRHID, error) {
 	id, err := NewIdentity(identityTemplate)
 	if err != nil {
 		return nil, err
@@ -71,9 +71,9 @@ func NewAssociateIdentity(identityTemplate Identity, associateTemplate Associate
 		return nil, err
 	}
 
-	id.Identity.Associate = associate
+	id.Identity.Associate = *associate
 
-	id.Identity.Type = ptrstring("Associate")
+	id.Identity.Type = "Associate"
 
 	return id, nil
 }
@@ -81,7 +81,7 @@ func NewAssociateIdentity(identityTemplate Identity, associateTemplate Associate
 // NewInternalIdentity will build and return a fully populated Internal identity
 // record, using any values that are present in identityTemplate and
 // internalTemplate.
-func NewInternalIdentity(identityTemplate Identity, internalTemplate Internal) (*identity.Identity, error) {
+func NewInternalIdentity(identityTemplate Identity, internalTemplate Internal) (*identity.XRHID, error) {
 	id, err := NewIdentity(identityTemplate)
 	if err != nil {
 		return nil, err
@@ -92,9 +92,9 @@ func NewInternalIdentity(identityTemplate Identity, internalTemplate Internal) (
 		return nil, err
 	}
 
-	id.Identity.Internal = internal
+	id.Identity.Internal = *internal
 
-	id.Identity.Type = ptrstring("Internal")
+	id.Identity.Type = "Internal"
 
 	return id, nil
 }
@@ -102,7 +102,7 @@ func NewInternalIdentity(identityTemplate Identity, internalTemplate Internal) (
 // NewSystemIdentity will build and return a fully populated System identity
 // record, using any values that are present in identityTemplate and
 // systemTemplate.
-func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*identity.Identity, error) {
+func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*identity.XRHID, error) {
 	id, err := NewIdentity(identityTemplate)
 	if err != nil {
 		return nil, err
@@ -113,10 +113,10 @@ func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*ident
 		return nil, err
 	}
 
-	id.Identity.System = system
+	id.Identity.System = *system
 
-	id.Identity.Type = ptrstring("System")
-	id.Identity.Internal = &identity.Internal{
+	id.Identity.Type = "System"
+	id.Identity.Internal = identity.Internal{
 		OrgID: id.Identity.OrgID,
 	}
 
@@ -125,7 +125,7 @@ func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*ident
 
 // NewX509Identity will build and return a fully populated X509 identity record,
 // using any values that are present in identityTemplate and x509Template.
-func NewX509Identity(identityTemplate Identity, x509Template X509) (*identity.Identity, error) {
+func NewX509Identity(identityTemplate Identity, x509Template X509) (*identity.XRHID, error) {
 	id, err := NewIdentity(identityTemplate)
 	if err != nil {
 		return nil, err
@@ -136,16 +136,16 @@ func NewX509Identity(identityTemplate Identity, x509Template X509) (*identity.Id
 		return nil, err
 	}
 
-	id.Identity.X509 = x509
+	id.Identity.X509 = *x509
 
-	id.Identity.Type = ptrstring("X509")
+	id.Identity.Type = "X509"
 
 	return id, nil
 }
 
 // NewUserIdentity will build and return a fully populated User identity record,
 // using any values that are present in identityTemplate and userTemplate.
-func NewUserIdentity(identityTemplate Identity, userTemplate User) (*identity.Identity, error) {
+func NewUserIdentity(identityTemplate Identity, userTemplate User) (*identity.XRHID, error) {
 	id, err := NewIdentity(identityTemplate)
 	if err != nil {
 		return nil, err
@@ -156,10 +156,10 @@ func NewUserIdentity(identityTemplate Identity, userTemplate User) (*identity.Id
 		return nil, err
 	}
 
-	id.Identity.User = user
+	id.Identity.User = *user
 
-	id.Identity.Type = ptrstring("User")
-	id.Identity.Internal = &identity.Internal{
+	id.Identity.Type = "User"
+	id.Identity.Internal = identity.Internal{
 		OrgID: id.Identity.OrgID,
 	}
 
