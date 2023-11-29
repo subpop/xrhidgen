@@ -6,7 +6,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
-	"github.com/redhatinsights/module-update-router/identity"
+	"github.com/redhatinsights/platform-go-middlewares/identity"
 )
 
 func TestNewInternal(t *testing.T) {

@@ -2,7 +2,7 @@ package xrhidgen
 
 import (
 	"github.com/pioz/faker"
-	"github.com/redhatinsights/module-update-router/identity"
+	"github.com/redhatinsights/platform-go-middlewares/identity"
 )
 
 // User holds values to be used as input when generating a user identity record.
