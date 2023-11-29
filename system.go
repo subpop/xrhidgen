@@ -19,21 +19,21 @@ func NewSystem(template System) (*identity.System, error) {
 	var id identity.System
 
 	if template.CertType != nil {
-		id.CertType = template.CertType
+		id.CertType = *template.CertType
 	} else {
-		id.CertType = ptrstring(faker.Pick("", "consumer", "system"))
+		id.CertType = faker.Pick("", "consumer", "system")
 	}
 
 	if template.ClusterID != nil {
-		id.ClusterID = template.ClusterID
+		id.ClusterId = *template.ClusterID
 	} else {
-		id.ClusterID = ptrstring(faker.String())
+		id.ClusterId = faker.String()
 	}
 
 	if template.CN != nil {
-		id.CN = *template.CN
+		id.CommonName = *template.CN
 	} else {
-		id.CN = faker.String()
+		id.CommonName = faker.String()
 	}
 
 	return &id, nil

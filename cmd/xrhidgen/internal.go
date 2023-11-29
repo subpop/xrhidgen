@@ -11,7 +11,7 @@ import (
 )
 
 var internalFlags struct {
-	authType    Float64Flag
+	authType    Float32Flag
 	crossAccess BoolFlag
 	orgID       StringFlag
 }

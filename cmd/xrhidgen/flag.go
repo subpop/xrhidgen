@@ -46,25 +46,27 @@ func (f *BoolFlag) Set(v string) error {
 
 func (f BoolFlag) IsBoolFlag() bool { return true }
 
-type Float64Flag struct {
-	Value *float64
+type Float32Flag struct {
+	Value *float32
 }
 
-func (f Float64Flag) String() string {
+func (f Float32Flag) String() string {
 	if f.Value != nil {
-		return strconv.FormatFloat(*f.Value, 'G', -1, 64)
+		return strconv.FormatFloat(float64(*f.Value), 'G', -1, 32)
 	}
 	return ""
 }
 
-func (f *Float64Flag) Set(v string) error {
+func (f *Float32Flag) Set(v string) error {
 	if f.Value == nil {
-		f.Value = new(float64)
+		f.Value = new(float32)
 	}
 	var err error
-	*f.Value, err = strconv.ParseFloat(v, 64)
+	var value float64
+	value, err = strconv.ParseFloat(v, 32)
 	if err != nil {
 		return err
 	}
+	*f.Value = float32(value)
 	return nil
 }
