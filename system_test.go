@@ -7,50 +7,52 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewSystem(t *testing.T) {
-	tests := []struct {
+	type Tests struct {
 		description string
 		seed        int64
 		input       System
 		want        *identity.System
 		wantError   error
-	}{
+	}
+	tests := []Tests{
 		{
 			description: "empty template",
 			seed:        100,
 			input:       System{},
 			want: &identity.System{
-				CertType:  ptrstring("consumer"),
-				ClusterID: ptrstring("i"),
-				CN:        "wu7Re",
+				CertType:   "consumer",
+				ClusterId:  "i",
+				CommonName: "wu7Re",
 			},
 		},
 		{
 			description: "partial template",
 			seed:        100,
 			input: System{
-				CertType: ptrstring("asdf"),
+				CertType: pointy.String("asdf"),
 			},
 			want: &identity.System{
-				CertType:  ptrstring("asdf"),
-				ClusterID: ptrstring("gimwu7Re"),
-				CN:        "hCRM50",
+				CertType:   "asdf",
+				ClusterId:  "gimwu7Re",
+				CommonName: "hCRM50",
 			},
 		},
 		{
 			description: "full template",
 			seed:        100,
 			input: System{
-				CertType:  ptrstring("consumer"),
-				ClusterID: ptrstring("1234"),
-				CN:        ptrstring("xyz"),
+				CertType:  pointy.String("consumer"),
+				ClusterID: pointy.String("1234"),
+				CN:        pointy.String("xyz"),
 			},
 			want: &identity.System{
-				CertType:  ptrstring("consumer"),
-				ClusterID: ptrstring("1234"),
-				CN:        "xyz",
+				CertType:   "consumer",
+				ClusterId:  "1234",
+				CommonName: "xyz",
 			},
 		},
 	}
