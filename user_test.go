@@ -7,76 +7,78 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewUser(t *testing.T) {
-	tests := []struct {
+	type Tests struct {
 		description string
 		seed        int64
 		input       User
 		want        *identity.User
 		wantError   error
-	}{
+	}
+	tests := []Tests{
 		{
 			description: "empty template",
 			seed:        100,
 			input:       User{},
 			want: &identity.User{
-				Email:      "ammon@benison.biz",
-				FirstName:  "Augustine",
-				IsActive:   true,
-				IsInternal: false,
-				IsOrgAdmin: false,
-				LastName:   "Stracke",
-				Locale:     "fo",
-				UserID:     "salify",
-				Username:   "platas",
+				Email:     "ammon@benison.biz",
+				FirstName: "Augustine",
+				Active:    true,
+				Internal:  false,
+				OrgAdmin:  false,
+				LastName:  "Stracke",
+				Locale:    "fo",
+				UserID:    "salify",
+				Username:  "platas",
 			},
 		},
 		{
 			description: "partial template",
 			seed:        100,
 			input: User{
-				Email:     ptrstring("jsmith@redhat.com"),
-				FirstName: ptrstring("John"),
-				LastName:  ptrstring("Smith"),
+				Email:     pointy.String("jsmith@redhat.com"),
+				FirstName: pointy.String("John"),
+				LastName:  pointy.String("Smith"),
 			},
 			want: &identity.User{
-				Email:      "jsmith@redhat.com",
-				FirstName:  "John",
-				IsActive:   false,
-				IsInternal: true,
-				IsOrgAdmin: true,
-				LastName:   "Smith",
-				Locale:     "ik",
-				UserID:     "goniometer",
-				Username:   "waldner",
+				Email:     "jsmith@redhat.com",
+				FirstName: "John",
+				Active:    false,
+				Internal:  true,
+				OrgAdmin:  true,
+				LastName:  "Smith",
+				Locale:    "ik",
+				UserID:    "goniometer",
+				Username:  "waldner",
 			},
 		},
 		{
 			description: "full template",
 			seed:        100,
 			input: User{
-				Email:      ptrstring("jsmith@redhat.com"),
-				FirstName:  ptrstring("John"),
-				IsActive:   ptrbool(true),
-				IsInternal: ptrbool(true),
-				IsOrgAdmin: ptrbool(false),
-				LastName:   ptrstring("Smith"),
-				Locale:     ptrstring("en"),
-				UserID:     ptrstring("jsmith1"),
-				Username:   ptrstring("jsm"),
+				Email:      pointy.String("jsmith@redhat.com"),
+				FirstName:  pointy.String("John"),
+				IsActive:   pointy.Bool(true),
+				IsInternal: pointy.Bool(true),
+				IsOrgAdmin: pointy.Bool(false),
+				LastName:   pointy.String("Smith"),
+				Locale:     pointy.String("en"),
+				UserID:     pointy.String("jsmith1"),
+				Username:   pointy.String("jsm"),
 			},
 			want: &identity.User{
-				Email:      "jsmith@redhat.com",
-				FirstName:  "John",
-				IsActive:   true,
-				IsInternal: true,
-				IsOrgAdmin: false,
-				LastName:   "Smith",
-				Locale:     "en",
-				UserID:     "jsmith1",
-				Username:   "jsm",
+				Email:     "jsmith@redhat.com",
+				FirstName: "John",
+				Active:    true,
+				Internal:  true,
+				OrgAdmin:  false,
+				LastName:  "Smith",
+				Locale:    "en",
+				UserID:    "jsmith1",
+				Username:  "jsm",
 			},
 		},
 	}

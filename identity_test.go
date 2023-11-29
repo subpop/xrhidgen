@@ -7,43 +7,34 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewIdentity(t *testing.T) {
-	tests := []struct {
+	type Tests struct {
 		description string
 		seed        int64
 		input       Identity
-		want        *identity.Identity
+		want        *identity.XRHID
 		wantError   error
-	}{
+	}
+	tests := []Tests{
 		{
 			description: "empty template",
 			seed:        100,
 			input:       Identity{},
-			want: &identity.Identity{
-				Identity: struct {
-					AccountNumber         *string             "json:\"account_number,omitempty\""
-					Associate             *identity.Associate "json:\"associate,omitempty\""
-					AuthType              string              "json:\"auth_type,omitempty\""
-					EmployeeAccountNumber *string             "json:\"employee_account_number,omitempty\""
-					Internal              *identity.Internal  "json:\"internal,omitempty\""
-					OrgID                 string              "json:\"org_id\""
-					System                *identity.System    "json:\"system,omitempty\""
-					Type                  *string             "json:\"type,omitempty\""
-					User                  *identity.User      "json:\"user,omitempty\""
-					X509                  *identity.X509      "json:\"x509,omitempty\""
-				}{
-					AccountNumber:         nil,
-					Associate:             nil,
+			want: &identity.XRHID{
+				Identity: identity.Identity{
+					AccountNumber:         "",
+					Associate:             identity.Associate{},
 					AuthType:              "basic-auth",
-					EmployeeAccountNumber: ptrstring("02299"),
-					Internal:              nil,
+					EmployeeAccountNumber: "02299",
+					Internal:              identity.Internal{},
 					OrgID:                 "41123",
-					System:                nil,
-					Type:                  ptrstring("50cQB"),
-					User:                  nil,
-					X509:                  nil,
+					System:                identity.System{},
+					Type:                  "50cQB",
+					User:                  identity.User{},
+					X509:                  identity.X509{},
 				},
 			},
 		},
@@ -51,31 +42,20 @@ func TestNewIdentity(t *testing.T) {
 			description: "partial template",
 			seed:        100,
 			input: Identity{
-				AccountNumber: ptrstring("1234"),
+				AccountNumber: pointy.String("1234"),
 			},
-			want: &identity.Identity{
-				Identity: struct {
-					AccountNumber         *string             "json:\"account_number,omitempty\""
-					Associate             *identity.Associate "json:\"associate,omitempty\""
-					AuthType              string              "json:\"auth_type,omitempty\""
-					EmployeeAccountNumber *string             "json:\"employee_account_number,omitempty\""
-					Internal              *identity.Internal  "json:\"internal,omitempty\""
-					OrgID                 string              "json:\"org_id\""
-					System                *identity.System    "json:\"system,omitempty\""
-					Type                  *string             "json:\"type,omitempty\""
-					User                  *identity.User      "json:\"user,omitempty\""
-					X509                  *identity.X509      "json:\"x509,omitempty\""
-				}{
-					AccountNumber:         ptrstring("1234"),
-					Associate:             nil,
+			want: &identity.XRHID{
+				Identity: identity.Identity{
+					AccountNumber:         "1234",
+					Associate:             identity.Associate{},
 					AuthType:              "cert-auth",
-					EmployeeAccountNumber: ptrstring("00229"),
-					Internal:              nil,
+					EmployeeAccountNumber: "00229",
+					Internal:              identity.Internal{},
 					OrgID:                 "94112",
-					System:                nil,
-					Type:                  ptrstring("M5"),
-					User:                  nil,
-					X509:                  nil,
+					System:                identity.System{},
+					Type:                  "M5",
+					User:                  identity.User{},
+					X509:                  identity.X509{},
 				},
 			},
 		},
@@ -83,35 +63,24 @@ func TestNewIdentity(t *testing.T) {
 			description: "full template",
 			seed:        100,
 			input: Identity{
-				AccountNumber:         ptrstring("10001"),
-				AuthType:              ptrstring("basic-auth"),
-				EmployeeAccountNumber: ptrstring("112233"),
-				OrgID:                 ptrstring("111111"),
-				Type:                  ptrstring("universal"),
+				AccountNumber:         pointy.String("10001"),
+				AuthType:              pointy.String("basic-auth"),
+				EmployeeAccountNumber: pointy.String("112233"),
+				OrgID:                 pointy.String("111111"),
+				Type:                  pointy.String("universal"),
 			},
-			want: &identity.Identity{
-				Identity: struct {
-					AccountNumber         *string             "json:\"account_number,omitempty\""
-					Associate             *identity.Associate "json:\"associate,omitempty\""
-					AuthType              string              "json:\"auth_type,omitempty\""
-					EmployeeAccountNumber *string             "json:\"employee_account_number,omitempty\""
-					Internal              *identity.Internal  "json:\"internal,omitempty\""
-					OrgID                 string              "json:\"org_id\""
-					System                *identity.System    "json:\"system,omitempty\""
-					Type                  *string             "json:\"type,omitempty\""
-					User                  *identity.User      "json:\"user,omitempty\""
-					X509                  *identity.X509      "json:\"x509,omitempty\""
-				}{
-					AccountNumber:         ptrstring("10001"),
-					Associate:             nil,
+			want: &identity.XRHID{
+				Identity: identity.Identity{
+					AccountNumber:         "10001",
+					Associate:             identity.Associate{},
 					AuthType:              "basic-auth",
-					EmployeeAccountNumber: ptrstring("112233"),
-					Internal:              nil,
+					EmployeeAccountNumber: "112233",
+					Internal:              identity.Internal{},
 					OrgID:                 "111111",
-					System:                nil,
-					Type:                  ptrstring("universal"),
-					User:                  nil,
-					X509:                  nil,
+					System:                identity.System{},
+					Type:                  "universal",
+					User:                  identity.User{},
+					X509:                  identity.X509{},
 				},
 			},
 		},

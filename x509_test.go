@@ -7,16 +7,18 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewX509(t *testing.T) {
-	tests := []struct {
+	type Test struct {
 		description string
 		seed        int64
 		input       X509
 		want        *identity.X509
 		wantError   error
-	}{
+	}
+	tests := []Test{
 		{
 			description: "empty template",
 			seed:        100,
@@ -30,7 +32,7 @@ func TestNewX509(t *testing.T) {
 			description: "partial template",
 			seed:        100,
 			input: X509{
-				SubjectDN: ptrstring("CN = d6cde789-fbad-45ea-a542-30ba779aa870"),
+				SubjectDN: pointy.String("CN = d6cde789-fbad-45ea-a542-30ba779aa870"),
 			},
 			want: &identity.X509{
 				SubjectDN: "CN = d6cde789-fbad-45ea-a542-30ba779aa870",
@@ -41,8 +43,8 @@ func TestNewX509(t *testing.T) {
 			description: "full template",
 			seed:        100,
 			input: X509{
-				SubjectDN: ptrstring("CN = d6cde789-fbad-45ea-a542-30ba779aa870"),
-				IssuerDN:  ptrstring("O = Foo, Inc."),
+				SubjectDN: pointy.String("CN = d6cde789-fbad-45ea-a542-30ba779aa870"),
+				IssuerDN:  pointy.String("O = Foo, Inc."),
 			},
 			want: &identity.X509{
 				SubjectDN: "CN = d6cde789-fbad-45ea-a542-30ba779aa870",

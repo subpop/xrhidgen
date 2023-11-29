@@ -7,6 +7,7 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewAssociate(t *testing.T) {
@@ -33,9 +34,9 @@ func TestNewAssociate(t *testing.T) {
 			description: "partial template",
 			seed:        100,
 			input: Associate{
-				Email:     ptrstring("jsmith@redhat.com"),
-				GivenName: ptrstring("John"),
-				Surname:   ptrstring("Smith"),
+				Email:     pointy.String("jsmith@redhat.com"),
+				GivenName: pointy.String("John"),
+				Surname:   pointy.String("Smith"),
 			},
 			want: &identity.Associate{
 				Email:     "jsmith@redhat.com",
@@ -49,11 +50,11 @@ func TestNewAssociate(t *testing.T) {
 			description: "full template",
 			seed:        100,
 			input: Associate{
-				Email:     ptrstring("jsmith@redhat.com"),
-				GivenName: ptrstring("John"),
-				RHatUUID:  ptrstring("6208f878-b405-498e-979f-e85cd68d8a18"),
-				Role:      ptrslicestring([]string{"a", "b"}),
-				Surname:   ptrstring("Smith"),
+				Email:     pointy.String("jsmith@redhat.com"),
+				GivenName: pointy.String("John"),
+				RHatUUID:  pointy.String("6208f878-b405-498e-979f-e85cd68d8a18"),
+				Role:      &[]string{"a", "b"},
+				Surname:   pointy.String("Smith"),
 			},
 			want: &identity.Associate{
 				Email:     "jsmith@redhat.com",

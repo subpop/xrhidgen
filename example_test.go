@@ -18,7 +18,7 @@ func ExampleAssociate() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"associate":{"email":"winnifredwinning@shred.org","givenName":"Cameron","rhatUUID":"00e3c758-1d7d-4ecd-98a2-997157e2d05c","Role":null,"surname":"Swift"},"auth_type":"basic-auth","employee_account_number":"02299","org_id":"41123","type":"Associate"}}
+	//Output: {"identity":{"employee_account_number":"02299","org_id":"41123","internal":{"org_id":""},"user":{"username":"","email":"","first_name":"","last_name":"","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"","user_id":""},"system":{},"associate":{"Role":null,"email":"winnifredwinning@shred.org","givenName":"Cameron","rhatUUID":"00e3c758-1d7d-4ecd-98a2-997157e2d05c","surname":"Swift"},"x509":{"subject_dn":"","issuer_dn":""},"type":"Associate","auth_type":"basic-auth"}}
 }
 
 func ExampleInternal() {
@@ -32,7 +32,7 @@ func ExampleInternal() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"auth_type":"basic-auth","internal":{"auth_time":-2978345425851500500,"cross_access":false,"org_id":"08321"},"org_id":"03797","type":"Internal"}}
+	//Output: {"identity":{"org_id":"03797","internal":{"org_id":"08321","auth_time":-2978345600000000000},"user":{"username":"","email":"","first_name":"","last_name":"","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"","user_id":""},"system":{},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"","issuer_dn":""},"type":"Internal","auth_type":"basic-auth"}}
 }
 
 func ExampleSystem() {
@@ -46,7 +46,7 @@ func ExampleSystem() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"account_number":"16398","auth_type":"basic-auth","internal":{"org_id":"57572"},"org_id":"57572","system":{"cert_type":"consumer","cluster_id":"x8LdjPo","cn":"It6P"},"type":"System"}}
+	//Output: {"identity":{"account_number":"16398","org_id":"57572","internal":{"org_id":"57572"},"user":{"username":"","email":"","first_name":"","last_name":"","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"","user_id":""},"system":{"cn":"It6P","cert_type":"consumer","cluster_id":"x8LdjPo"},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"","issuer_dn":""},"type":"System","auth_type":"basic-auth"}}
 }
 
 func ExampleUser() {
@@ -60,7 +60,7 @@ func ExampleUser() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"auth_type":"cert-auth","internal":{"org_id":"23807"},"org_id":"23807","type":"User","user":{"email":"fransen@crump.biz","first_name":"Frankie","is_active":false,"is_internal":true,"is_org_admin":false,"last_name":"Collins","locale":"pi","user_id":"backset","username":"tycoon"}}}
+	//Output: {"identity":{"org_id":"23807","internal":{"org_id":"23807"},"user":{"username":"tycoon","email":"fransen@crump.biz","first_name":"Frankie","last_name":"Collins","is_active":false,"is_org_admin":false,"is_internal":true,"locale":"pi","user_id":"backset"},"system":{},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"","issuer_dn":""},"type":"User","auth_type":"cert-auth"}}
 }
 
 func ExampleX509() {
@@ -74,5 +74,5 @@ func ExampleX509() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"auth_type":"cert-auth","org_id":"23807","type":"X509","x509":{"subject_dn":"2","issuer_dn":"3sfSj"}}}
+	//Output: {"identity":{"org_id":"23807","internal":{"org_id":""},"user":{"username":"","email":"","first_name":"","last_name":"","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"","user_id":""},"system":{},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"2","issuer_dn":"3sfSj"},"type":"X509","auth_type":"cert-auth"}}
 }

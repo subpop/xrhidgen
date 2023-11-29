@@ -7,23 +7,25 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/pioz/faker"
 	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"go.openly.dev/pointy"
 )
 
 func TestNewInternal(t *testing.T) {
-	tests := []struct {
+	type Tests struct {
 		description string
 		seed        int64
 		input       Internal
 		want        *identity.Internal
 		wantError   error
-	}{
+	}
+	tests := []Tests{
 		{
 			description: "empty template",
 			seed:        100,
 			input:       Internal{},
 			want: &identity.Internal{
-				AuthTime:    ptrfloat64(-1.6924639230312625e+18),
-				CrossAccess: ptrbool(true),
+				AuthTime:    float32(-1.6924639230312625e+18),
+				CrossAccess: true,
 				OrgID:       "00229",
 			},
 		},
@@ -31,11 +33,11 @@ func TestNewInternal(t *testing.T) {
 			description: "partial template",
 			seed:        100,
 			input: Internal{
-				AuthTime: ptrfloat64(1.0),
+				AuthTime: pointy.Float32(1.0),
 			},
 			want: &identity.Internal{
-				AuthTime:    ptrfloat64(1.0),
-				CrossAccess: ptrbool(false),
+				AuthTime:    1.0,
+				CrossAccess: false,
 				OrgID:       "80022",
 			},
 		},
@@ -43,13 +45,13 @@ func TestNewInternal(t *testing.T) {
 			description: "full template",
 			seed:        100,
 			input: Internal{
-				AuthTime:    ptrfloat64(2.0),
-				CrossAccess: ptrbool(true),
-				OrgID:       ptrstring("123456"),
+				AuthTime:    pointy.Float32(2.0),
+				CrossAccess: pointy.Bool(true),
+				OrgID:       pointy.String("123456"),
 			},
 			want: &identity.Internal{
-				AuthTime:    ptrfloat64(2.0),
-				CrossAccess: ptrbool(true),
+				AuthTime:    2.0,
+				CrossAccess: true,
 				OrgID:       "123456",
 			},
 		},
