@@ -28,7 +28,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v2.5.1
+        uses: golangci/golangci-lint-action@v3.7.0
   lint-language:
     name: Lint language
     runs-on: ubuntu-latest
