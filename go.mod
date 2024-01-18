@@ -6,7 +6,7 @@ require (
 	github.com/google/go-cmp v0.6.0
 	github.com/peterbourgon/ff/v3 v3.4.0
 	github.com/pioz/faker v1.7.3
-	github.com/redhatinsights/platform-go-middlewares v0.20.0
+	github.com/redhatinsights/platform-go-middlewares/v2 v2.0.0-20240118174021-7836c2be5281
 	github.com/sgreben/flagvar v1.10.1
 	go.openly.dev/pointy v1.3.0
 )
