@@ -2,7 +2,7 @@ package xrhidgen
 
 import (
 	"github.com/pioz/faker"
-	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"github.com/redhatinsights/platform-go-middlewares/v2/identity"
 )
 
 // System holds values to be used as input when generating a system identity

@@ -2,7 +2,7 @@ package xrhidgen
 
 import (
 	"github.com/pioz/faker"
-	"github.com/redhatinsights/platform-go-middlewares/identity"
+	"github.com/redhatinsights/platform-go-middlewares/v2/identity"
 )
 
 // X509 holds values to be used as input when generating an x509 identity
