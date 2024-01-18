@@ -165,3 +165,24 @@ func NewUserIdentity(identityTemplate Identity, userTemplate User) (*identity.XR
 
 	return id, nil
 }
+
+// NewServiceAccountIdentity will build and return a fully populated
+// ServiceAccount identity record, using any values that are present in
+// identityTemplate and serviceAccountTemplate.
+func NewServiceAccountIdentity(identityTemplate Identity, serviceAccountTemplate ServiceAccount) (*identity.XRHID, error) {
+	id, err := NewIdentity(identityTemplate)
+	if err != nil {
+		return nil, err
+	}
+
+	serviceAccount, err := NewServiceAccount(serviceAccountTemplate)
+	if err != nil {
+		return nil, err
+	}
+
+	id.Identity.ServiceAccount = *serviceAccount
+
+	id.Identity.Type = "ServiceAccount"
+
+	return id, nil
+}
