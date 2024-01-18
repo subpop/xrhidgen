@@ -1,4 +1,4 @@
-[![Go Documentation](https://pkg.go.dev/github.com/subpop/xrhidgen?status.svg)](https://pkg.go.dev/github.com/subpop/xrhidgen)
+[![Go Reference](https://pkg.go.dev/badge/github.com/subpop/xrhidgen.svg)](https://pkg.go.dev/github.com/subpop/xrhidgen)
 
 # xrhidgen
 
