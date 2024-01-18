@@ -69,7 +69,7 @@ $ SEED=100 xrhidgen user
 ### Installation
 
 ```
-go get github.com/subpop/xrhidgen/cmd/xrhidgen@latest
+go get github.com/subpop/xrhidgen@latest
 ```
 
 ### Usage
