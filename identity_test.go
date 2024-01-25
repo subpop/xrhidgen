@@ -26,15 +26,11 @@ func TestNewIdentity(t *testing.T) {
 			want: &identity.XRHID{
 				Identity: identity.Identity{
 					AccountNumber:         "",
-					Associate:             identity.Associate{},
 					AuthType:              "basic-auth",
 					EmployeeAccountNumber: "02299",
 					Internal:              identity.Internal{},
 					OrgID:                 "41123",
-					System:                identity.System{},
 					Type:                  "50cQB",
-					User:                  identity.User{},
-					X509:                  identity.X509{},
 				},
 			},
 		},
@@ -47,15 +43,11 @@ func TestNewIdentity(t *testing.T) {
 			want: &identity.XRHID{
 				Identity: identity.Identity{
 					AccountNumber:         "1234",
-					Associate:             identity.Associate{},
 					AuthType:              "cert-auth",
 					EmployeeAccountNumber: "00229",
 					Internal:              identity.Internal{},
 					OrgID:                 "94112",
-					System:                identity.System{},
 					Type:                  "M5",
-					User:                  identity.User{},
-					X509:                  identity.X509{},
 				},
 			},
 		},
@@ -72,15 +64,11 @@ func TestNewIdentity(t *testing.T) {
 			want: &identity.XRHID{
 				Identity: identity.Identity{
 					AccountNumber:         "10001",
-					Associate:             identity.Associate{},
 					AuthType:              "basic-auth",
 					EmployeeAccountNumber: "112233",
 					Internal:              identity.Internal{},
 					OrgID:                 "111111",
-					System:                identity.System{},
 					Type:                  "universal",
-					User:                  identity.User{},
-					X509:                  identity.X509{},
 				},
 			},
 		},

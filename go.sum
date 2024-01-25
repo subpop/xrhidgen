@@ -8,6 +8,7 @@ github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeN
 github.com/nxadm/tail v1.4.11 h1:8feyoE3OzPrcshW5/MJ4sGESc5cqmGkGCWlco4l0bqY=
 github.com/onsi/ginkgo v1.16.5 h1:8xi0RTUf59SOSfEtZMvwTvXYMzG4gV23XVHOZiXNtnE=
 github.com/onsi/gomega v1.30.0 h1:hvMK7xYz4D3HapigLTeGdId/NcfQx1VHMJc60ew99+8=
+github.com/onsi/gomega v1.31.1 h1:KYppCUK+bUgAZwHOu7EXVBKyQA6ILvOESHkn/tgoqvo=
 github.com/peterbourgon/ff/v3 v3.4.0 h1:QBvM/rizZM1cB0p0lGMdmR7HxZeI/ZrBWB4DqLkMUBc=
 github.com/peterbourgon/ff/v3 v3.4.0/go.mod h1:zjJVUhx+twciwfDl0zBcFzl4dW8axCRyXE/eKY9RztQ=
 github.com/pioz/faker v1.7.3 h1:Tez8Emuq0UN+/d6mo3a9m/9ZZ/zdfJk0c5RtRatrceM=
@@ -16,6 +17,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/redhatinsights/platform-go-middlewares/v2 v2.0.0-20240118174021-7836c2be5281 h1:L20lFlHbO92CNOH+xNM3U+TnSQfnSPIZdUjgIhtCIl0=
 github.com/redhatinsights/platform-go-middlewares/v2 v2.0.0-20240118174021-7836c2be5281/go.mod h1:GI4AFQc+iHCvHGbbuY1roOY7KXKDqWbldRemReHk7Pk=
+github.com/redhatinsights/platform-go-middlewares/v2 v2.0.0-beta.2 h1:pEDiKYqxEoZT6Mx7B57rYqIgmYyly0f8JfzfY38b9T4=
+github.com/redhatinsights/platform-go-middlewares/v2 v2.0.0-beta.2/go.mod h1:Ipl1kmvhZSpgRoe7MyJNK+VAvGG1cIqn535TuId5npw=
 github.com/sgreben/flagvar v1.10.1 h1:ukN3zqVj9T9U7CiKG6owmejxswJYMbAg9Mxkhi1B4tw=
 github.com/sgreben/flagvar v1.10.1/go.mod h1:AxDmbFDIxZ4dHj2zg8LxuJn5CSwSS28iY/Wy56e+nhI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

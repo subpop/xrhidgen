@@ -44,12 +44,12 @@ FLAGS
 
 ```
 $ xrhidgen user -email someuser@redhat.com
-{"identity":{"org_id":"45841","internal":{"org_id":"45841"},"user":{"username":"backbencher","email":"someuser@redhat.com","first_name":"Cira","last_name":"Roob","is_active":false,"is_org_admin":true,"is_internal":false,"locale":"li","user_id":"nicole"},"system":{},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"","issuer_dn":""},"service_account":{"client_id":"","username":""},"type":"User","auth_type":"cert-auth"},"entitlements":null}
+{"identity":{"account_number":"71384","org_id":"72467","internal":{"org_id":"72467"},"user":{"username":"rockabilly","email":"someuser@redhat.com","first_name":"Sawyer","last_name":"Ferry","is_active":true,"is_org_admin":true,"is_internal":false,"locale":"ee","user_id":"insurgence"},"type":"User","auth_type":"cert-auth"},"entitlements":null}
 ```
 
 ```
 $ xrhidgen system | base64 -w0
-eyJpZGVudGl0eSI6eyJvcmdfaWQiOiIyMTcwMyIsImludGVybmFsIjp7Im9yZ19pZCI6IjIxNzAzIn0sInVzZXIiOnsidXNlcm5hbWUiOiIiLCJlbWFpbCI6IiIsImZpcnN0X25hbWUiOiIiLCJsYXN0X25hbWUiOiIiLCJpc19hY3RpdmUiOmZhbHNlLCJpc19vcmdfYWRtaW4iOmZhbHNlLCJpc19pbnRlcm5hbCI6ZmFsc2UsImxvY2FsZSI6IiIsInVzZXJfaWQiOiIifSwic3lzdGVtIjp7ImNuIjoiRyIsImNlcnRfdHlwZSI6ImNvbnN1bWVyIiwiY2x1c3Rlcl9pZCI6IkhKbyJ9LCJhc3NvY2lhdGUiOnsiUm9sZSI6bnVsbCwiZW1haWwiOiIiLCJnaXZlbk5hbWUiOiIiLCJyaGF0VVVJRCI6IiIsInN1cm5hbWUiOiIifSwieDUwOSI6eyJzdWJqZWN0X2RuIjoiIiwiaXNzdWVyX2RuIjoiIn0sInNlcnZpY2VfYWNjb3VudCI6eyJjbGllbnRfaWQiOiIiLCJ1c2VybmFtZSI6IiJ9LCJ0eXBlIjoiU3lzdGVtIiwiYXV0aF90eXBlIjoiYmFzaWMtYXV0aCJ9LCJlbnRpdGxlbWVudHMiOm51bGx9Cg==
+eyJpZGVudGl0eSI6eyJvcmdfaWQiOiI2NjY1MSIsImludGVybmFsIjp7Im9yZ19pZCI6IjY2NjUxIn0sInN5c3RlbSI6eyJjbiI6ImFFcEdUZSIsImNlcnRfdHlwZSI6ImNvbnN1bWVyIiwiY2x1c3Rlcl9pZCI6ImlUNksifSwidHlwZSI6IlN5c3RlbSIsImF1dGhfdHlwZSI6ImNlcnQtYXV0aCJ9LCJlbnRpdGxlbWVudHMiOm51bGx9Cg==
 ```
 
 ```
@@ -61,7 +61,7 @@ used to initialize the generator to a deterministic state.
 
 ```
 $ SEED=100 xrhidgen user
-{"identity":{"employee_account_number":"02299","org_id":"41123","internal":{"org_id":"41123"},"user":{"username":"skeptic","email":"winnifredwinning@shred.org","first_name":"Cameron","last_name":"Stehr","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"fi","user_id":"meredeth"},"system":{},"associate":{"Role":null,"email":"","givenName":"","rhatUUID":"","surname":""},"x509":{"subject_dn":"","issuer_dn":""},"service_account":{"client_id":"","username":""},"type":"User","auth_type":"basic-auth"},"entitlements":null}
+{"identity":{"employee_account_number":"02299","org_id":"41123","internal":{"org_id":"41123"},"user":{"username":"skeptic","email":"winnifredwinning@shred.org","first_name":"Cameron","last_name":"Stehr","is_active":false,"is_org_admin":false,"is_internal":false,"locale":"fi","user_id":"meredeth"},"type":"User","auth_type":"basic-auth"},"entitlements":null}
 ```
 
 ## Go package

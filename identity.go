@@ -71,7 +71,7 @@ func NewAssociateIdentity(identityTemplate Identity, associateTemplate Associate
 		return nil, err
 	}
 
-	id.Identity.Associate = *associate
+	id.Identity.Associate = associate
 
 	id.Identity.Type = "Associate"
 
@@ -113,7 +113,7 @@ func NewSystemIdentity(identityTemplate Identity, systemTemplate System) (*ident
 		return nil, err
 	}
 
-	id.Identity.System = *system
+	id.Identity.System = system
 
 	id.Identity.Type = "System"
 	id.Identity.Internal = identity.Internal{
@@ -136,7 +136,7 @@ func NewX509Identity(identityTemplate Identity, x509Template X509) (*identity.XR
 		return nil, err
 	}
 
-	id.Identity.X509 = *x509
+	id.Identity.X509 = x509
 
 	id.Identity.Type = "X509"
 
@@ -156,7 +156,7 @@ func NewUserIdentity(identityTemplate Identity, userTemplate User) (*identity.XR
 		return nil, err
 	}
 
-	id.Identity.User = *user
+	id.Identity.User = user
 
 	id.Identity.Type = "User"
 	id.Identity.Internal = identity.Internal{
@@ -180,7 +180,7 @@ func NewServiceAccountIdentity(identityTemplate Identity, serviceAccountTemplate
 		return nil, err
 	}
 
-	id.Identity.ServiceAccount = *serviceAccount
+	id.Identity.ServiceAccount = serviceAccount
 
 	id.Identity.Type = "ServiceAccount"
 
