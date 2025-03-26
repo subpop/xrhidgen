@@ -52,7 +52,7 @@ func main() {
 
 	fs.Var(&mainFlags.accountNumber, "account-number", "set the identity.account_number field (string)")
 	fs.Var(&mainFlags.authType, "auth-type", "set the identity.authtype field (string)")
-	fs.Var(&mainFlags.employeeAccountNumber, "employe-account-number", "set the identity.employee_account_number field (string)")
+	fs.Var(&mainFlags.employeeAccountNumber, "employee-account-number", "set the identity.employee_account_number field (string)")
 	fs.Var(&mainFlags.orgID, "org-id", "set the identity.org_id field (string)")
 	fs.Var(&mainFlags.Type, "type", "set the identity.type field (string)")
 	fs.Var(&mainFlags.entitlements, "entitlements", "set the identity.entitlements field (JSON)")
