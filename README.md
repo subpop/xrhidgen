@@ -33,11 +33,12 @@ SUBCOMMANDS
   service-account  generate a service account identity JSON record
 
 FLAGS
-  -account-number value          set the identity.account_number field (string)
-  -auth-type value               set the identity.authtype field (string)
-  -employe-account-number value  set the identity.employee_account_number field (string)
-  -org-id value                  set the identity.org_id field (string)
-  -type value                    set the identity.type field (string)
+  -account-number value           set the identity.account_number field (string)
+  -auth-type value                set the identity.authtype field (string)
+  -employee-account-number value  set the identity.employee_account_number field (string)
+  -entitlements value             set the identity.entitlements field (JSON)
+  -org-id value                   set the identity.org_id field (string)
+  -type value                     set the identity.type field (string)
 ```
 
 ### Examples

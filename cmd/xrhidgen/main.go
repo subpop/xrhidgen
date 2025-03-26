@@ -1,26 +1,28 @@
 // xrhidgen generates X-Rh-Identity records.
 //
-//	USAGE
-//	  xrhidgen [flags] <subcommand>
+// USAGE
+//   xrhidgen [flags] <subcommand>
+
+// xrhidgen can be used to generate JSON records suitable for passing in to
+// the X-Rh-Identity header. Each subcommand will generate a record of the
+// specified type. Any flag set will be inserted instead of a random value.
+// All remaining fields will be filled with a suitably random value.
+
+// SUBCOMMANDS
+//   user             generate a user identity JSON record
+//   internal         generate an internal identity JSON record
+//   system           generate a system identity JSON record
+//   associate        generate an associate identity JSON record
+//   service-account  generate a service account identity JSON record
+
+// FLAGS
 //
-//	xrhidgen can be used to generate JSON records suitable for passing in to
-//	the X-Rh-Identity header. Each subcommand will generate a record of the
-//	specified type. Any flag set will be inserted instead of a random value.
-//	All remaining fields will be filled with a suitably random value.
-//
-//	SUBCOMMANDS
-//	  user             generate a user identity JSON record
-//	  internal         generate an internal identity JSON record
-//	  system           generate a system identity JSON record
-//	  associate        generate an associate identity JSON record
-//	  service-account  generate a service account identity JSON record
-//
-//	FLAGS
-//	  -account-number value          set the identity.account_number field (string)
-//	  -auth-type value               set the identity.authtype field (string)
-//	  -employe-account-number value  set the identity.employee_account_number field (string)
-//	  -org-id value                  set the identity.org_id field (string)
-//	  -type value                    set the identity.type field (string)
+//	-account-number value           set the identity.account_number field (string)
+//	-auth-type value                set the identity.authtype field (string)
+//	-employee-account-number value  set the identity.employee_account_number field (string)
+//	-entitlements value             set the identity.entitlements field (JSON)
+//	-org-id value                   set the identity.org_id field (string)
+//	-type value                     set the identity.type field (string)
 package main
 
 import (
