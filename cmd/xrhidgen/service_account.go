@@ -36,7 +36,10 @@ var serviceAccountCommand = &ffcli.Command{
 			Username: serviceAccountFlags.username.Value,
 		}
 
-		id, err := xrhidgen.NewServiceAccountIdentity(mainIdentity(), serviceAccount)
+		mainIdentity := mainIdentity()
+		entitlements := mainEntitlements()
+
+		id, err := xrhidgen.NewServiceAccountIdentity(mainIdentity, serviceAccount, entitlements)
 		if err != nil {
 			return err
 		}

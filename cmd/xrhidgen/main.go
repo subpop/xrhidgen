@@ -33,6 +33,8 @@ import (
 	"strconv"
 
 	"github.com/peterbourgon/ff/v3/ffcli"
+	"github.com/pioz/faker"
+	"github.com/sgreben/flagvar"
 	"github.com/subpop/xrhidgen"
 )
 
@@ -42,6 +44,7 @@ var mainFlags struct {
 	employeeAccountNumber StringFlag
 	orgID                 StringFlag
 	Type                  StringFlag
+	entitlements          flagvar.JSON
 }
 
 func main() {
@@ -52,6 +55,7 @@ func main() {
 	fs.Var(&mainFlags.employeeAccountNumber, "employe-account-number", "set the identity.employee_account_number field (string)")
 	fs.Var(&mainFlags.orgID, "org-id", "set the identity.org_id field (string)")
 	fs.Var(&mainFlags.Type, "type", "set the identity.type field (string)")
+	fs.Var(&mainFlags.entitlements, "entitlements", "set the identity.entitlements field (JSON)")
 
 	root := &ffcli.Command{
 		ShortUsage: fmt.Sprintf("%v [flags] <subcommand>", fs.Name()),
@@ -90,4 +94,43 @@ func mainIdentity() xrhidgen.Identity {
 		OrgID:                 mainFlags.orgID.Value,
 		Type:                  mainFlags.Type.Value,
 	}
+}
+
+func mainEntitlements() xrhidgen.Entitlements {
+	entitlements := make(xrhidgen.Entitlements)
+
+	ents, ok := mainFlags.entitlements.Value.(map[string]interface{})
+	if !ok {
+		return entitlements
+	}
+
+	for serviceName, v := range ents {
+		details, ok := v.(map[string]interface{})
+		if !ok {
+			return entitlements
+		}
+
+		var isEntitled, isTrial bool
+
+		{
+			var ok bool
+			isEntitled, ok = details["is_entitled"].(bool)
+			if !ok {
+				isEntitled = faker.Bool()
+			}
+		}
+		{
+			isTrial, ok = details["is_trial"].(bool)
+			if !ok {
+				isTrial = faker.Bool()
+			}
+		}
+
+		entitlements[serviceName] = xrhidgen.ServiceDetails{
+			IsEntitled: &isEntitled,
+			IsTrial:    &isTrial,
+		}
+	}
+
+	return entitlements
 }

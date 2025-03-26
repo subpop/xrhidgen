@@ -9,7 +9,7 @@ import (
 
 func ExampleAssociate() {
 	xrhidgen.SetSeed(100)
-	id, err := xrhidgen.NewAssociateIdentity(xrhidgen.Identity{}, xrhidgen.Associate{})
+	id, err := xrhidgen.NewAssociateIdentity(xrhidgen.Identity{}, xrhidgen.Associate{}, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -23,7 +23,7 @@ func ExampleAssociate() {
 
 func ExampleInternal() {
 	xrhidgen.SetSeed(101)
-	id, err := xrhidgen.NewInternalIdentity(xrhidgen.Identity{}, xrhidgen.Internal{})
+	id, err := xrhidgen.NewInternalIdentity(xrhidgen.Identity{}, xrhidgen.Internal{}, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func ExampleInternal() {
 
 func ExampleSystem() {
 	xrhidgen.SetSeed(102)
-	id, err := xrhidgen.NewSystemIdentity(xrhidgen.Identity{}, xrhidgen.System{})
+	id, err := xrhidgen.NewSystemIdentity(xrhidgen.Identity{}, xrhidgen.System{}, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -51,7 +51,7 @@ func ExampleSystem() {
 
 func ExampleUser() {
 	xrhidgen.SetSeed(103)
-	id, err := xrhidgen.NewUserIdentity(xrhidgen.Identity{}, xrhidgen.User{})
+	id, err := xrhidgen.NewUserIdentity(xrhidgen.Identity{}, xrhidgen.User{}, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -65,7 +65,7 @@ func ExampleUser() {
 
 func ExampleX509() {
 	xrhidgen.SetSeed(103)
-	id, err := xrhidgen.NewX509Identity(xrhidgen.Identity{}, xrhidgen.X509{})
+	id, err := xrhidgen.NewX509Identity(xrhidgen.Identity{}, xrhidgen.X509{}, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -79,7 +79,7 @@ func ExampleX509() {
 
 func ExampleServiceAccount() {
 	xrhidgen.SetSeed(103)
-	id, err := xrhidgen.NewServiceAccountIdentity(xrhidgen.Identity{}, xrhidgen.ServiceAccount{})
+	id, err := xrhidgen.NewServiceAccountIdentity(xrhidgen.Identity{}, xrhidgen.ServiceAccount{}, nil)
 	if err != nil {
 		panic(err)
 	}

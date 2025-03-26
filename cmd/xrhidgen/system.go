@@ -39,7 +39,10 @@ var systemCommand = &ffcli.Command{
 			CN:        systemFlags.cn.Value,
 		}
 
-		id, err := xrhidgen.NewSystemIdentity(mainIdentity(), system)
+		mainIdentity := mainIdentity()
+		entitlements := mainEntitlements()
+
+		id, err := xrhidgen.NewSystemIdentity(mainIdentity, system, entitlements)
 		if err != nil {
 			return err
 		}

@@ -46,7 +46,10 @@ var associateCommand = &ffcli.Command{
 			Surname:   associateFlags.surName.Value,
 		}
 
-		id, err := xrhidgen.NewAssociateIdentity(mainIdentity(), associate)
+		mainIdentity := mainIdentity()
+		entitlements := mainEntitlements()
+
+		id, err := xrhidgen.NewAssociateIdentity(mainIdentity, associate, entitlements)
 		if err != nil {
 			return err
 		}

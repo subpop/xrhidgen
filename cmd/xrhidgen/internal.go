@@ -39,7 +39,10 @@ var internalCommand = &ffcli.Command{
 			OrgID:       internalFlags.orgID.Value,
 		}
 
-		id, err := xrhidgen.NewInternalIdentity(mainIdentity(), internal)
+		mainIdentity := mainIdentity()
+		entitlements := mainEntitlements()
+
+		id, err := xrhidgen.NewInternalIdentity(mainIdentity, internal, entitlements)
 		if err != nil {
 			return err
 		}

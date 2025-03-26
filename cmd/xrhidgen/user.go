@@ -57,7 +57,10 @@ var userCommand = &ffcli.Command{
 			Username:   userFlags.username.Value,
 		}
 
-		id, err := xrhidgen.NewUserIdentity(mainIdentity(), user)
+		mainIdentity := mainIdentity()
+		entitlements := mainEntitlements()
+
+		id, err := xrhidgen.NewUserIdentity(mainIdentity, user, entitlements)
 		if err != nil {
 			return err
 		}
