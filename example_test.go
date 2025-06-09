@@ -88,5 +88,5 @@ func ExampleServiceAccount() {
 		panic(err)
 	}
 	fmt.Println(string(data))
-	//Output: {"identity":{"org_id":"23807","internal":{"org_id":""},"service_account":{"client_id":"2","username":"crump"},"type":"ServiceAccount","auth_type":"cert-auth"},"entitlements":null}
+	//Output: {"identity":{"org_id":"23807","internal":{"org_id":""},"service_account":{"client_id":"2","username":"crump","user_id":""},"type":"ServiceAccount","auth_type":"cert-auth"},"entitlements":null}
 }
